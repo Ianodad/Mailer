@@ -1,0 +1,42 @@
+<div class="container-fluid mx-auto">
+    <div class="content">
+        <div class="content-header">
+            <h4 id="students-header">Users</h4>
+        </div>
+        <div class="content-body">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"
+                            Student</th>
+                            <th
+                            scope="col">Email</th>
+                        <th scope="col">IP1</th>
+                        <th scope="col">IP2</th>
+                        <th scope="col">IP3</th>
+                        <th scope="col">IP4</th>
+                        <th scope="col">Attendance</th>
+                        <th scope="col">View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each students}}
+                    <tr>
+                        <th scope="row">{{@key}}</th>
+                        <td>{{this.Student}}</td>
+                        <td>{{this.Email}}</td>
+                        <td>{{this.IP1}}</td>
+                        <td>{{this.IP2}} {{this.name.last}} </td>
+                        <td>{{this.IP3}}</td>
+                        <td>{{this.IP4}}</td>
+                        <td>{{this.Attendance}}</td>
+                        <td><button type="button"
+                                    class="btn btn-info"><a href="view/{{this.id}}">View</a></button></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="profile my-4"
+         style="width:900px">
+        <div class="card"
+             style="width: 25rem;">
+            <img class="card-img-top"
+                 src="https://picsum.photos/200/200"
+                 alt="Card image cap">
+            <div class="card-body">
+                <h3 class="card-title">{{processed.name}}</h3>
+            </div>
+            <div class="content">
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr class="py-1">
+                            <td class="py-1">
+                                <h5><b>IP1</b></h5>
+                            </td>
+                            <td><span style="color:green">{{processed.IP1}}</span>/31</td>
+                        </tr>
+                        <tr class="py-1">
+                            <td class="py-1">
+                                <h5><b>IP2</b></h5>
+                            </td>
+                            <td><span style="color:green">{{processed.IP2}}</span>/22</td>
+                        </tr>
+                        <tr class="py-1">
+                            <td>
+                                <h5><b>IP3</b></h5>
+                            </td>
+                            <td><span style="color:green">{{processed.IP3}}</span>/22</td>
+                        </tr>
+                        </tr>
+                        <tr class="py-1">
+                            <td>
+                                <h5><b>IP4</b></h5>
+                            </td>
+                            <td><span style="color:green">{{processed.IP1}}</span>/28</td>
+                        </tr>
+                        <tr class="py-1">
+                            <td>
+                                <h5><b>IP4</b></h5>
+                            </td>
+                            <td><span style="color:green">{{processed.IP1}}</span>/28</td>
+                        </tr>
+                        <tr class="py-1">
+                            <td>
+                                <h5><b>Attendance</b></h5>
+                            </td>
+                            <td><span style="color:green">{{processed.Attendance}}</span></td>
+                        </tr>
+                        <tr class="py-1">
+                            <td>
+                                <h5><b>IP Score</b></h5>
+                            </td>
+                            <td><span style="color:green">{{processed.Status.percentage}}%</span></td>
+                        </tr>
+                        <tr class="py-1">
+                            <td><span style="color:green">{{processed.Status.remark}}</span></td>
+                        </tr>
+                        <tr class="py-1">
+                            <td>
+                                <h5><b>Email</b></h5>
+                            </td>
+                            <td><span style="color:green">{{processed.Email}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="card-body">
+                <button type="button"
+                        class="btn btn-info"><a href="submit/{{processed.id}}">Send Mail</a></button>
+            </div>
+        </div>
+    </div>
+</div>
