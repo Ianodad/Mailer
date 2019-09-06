@@ -1,7 +1,6 @@
-# Project Title
+# MODE MAILER
 
-A nice project with a nice description
-
+This is an application that sends mail to the student from a list with appropriate remarks on course benchmark
 ---
 ## Requirements
 
@@ -26,41 +25,32 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
 If the installation was successful, you should be able to run the following command.
 
     $ node --version
-    v8.11.3
+    v10.11.3
 
     $ npm --version
-    6.1.0
+    6.10.1
 
 If you need to update `npm`, you can make it using `npm`! Cool right? After running the following command, just open again the command line and be happy.
 
     $ npm install npm -g
 
 ###
-### Yarn installation
-  After installing node, this project will need yarn too, so just run the following command.
-
-      $ npm install -g yarn
-
----
 
 ## Install
 
-    $ git clone https://github.com/YOUR_USERNAME/PROJECT_TITLE
-    $ cd PROJECT_TITLE
-    $ yarn install
+    $ git clone https://github.com/Ianodad/Mailer.git
+    $ cd Mailer
+    $ npm/yarn  install
 
-## Configure app
+### Set email and password
+create an .env file with the following variables 
 
-Open `a/nice/path/to/a.file` then edit it with your settings. You will need:
+    PASSWORD="Your Password"
+    EMAIL="Your email"
 
-- A setting;
-- Another setting;
-- One more setting;
+enable less secure for your google account https://myaccount.google.com/lesssecureapps?pli=1
 
 ## Running the project
 
-    $ yarn start
+    $ npm run dev
 
-## Simple build for production
-
-    $ yarn build
