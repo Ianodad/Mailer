@@ -13,7 +13,7 @@ function status(p1, p2, p3, p4) {
     const passmark = 70;
     const total = p1 + p2 + p3 + p4;
     const result = total / 103 * 100;
-    console.log(result);
+    // console.log(result);
     return {
         remark: result > 70 ? 'Congratulations you have PASSED the course' : 'Sorry to you failed the benchmarking',
         percentage: result.toFixed(2)
@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/submit/:id', (req, res) => {
+router.get('/submit/:id', async (req, res) => {
     const student = getStudent(req.params.id);
 
     let processed = {
@@ -71,7 +71,10 @@ router.get('/submit/:id', (req, res) => {
     };
 
     // console.log(processed);
-    sendMail(processed);
+    const back = await sendMail(processed);
+    res.render('submit', {
+        back: back
+    })
 });
 
 module.exports = router;

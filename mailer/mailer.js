@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const nodemailer = require('nodemailer');
 
-function send(mail) {
-    console.log(mail)
+async function send(mail) {
+
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -33,9 +33,12 @@ function send(mail) {
         `
     };
 
-    transporter.sendMail(mailOptions, function (err, data) {
-        err ? console.log('Error', err) : console.log('Email Sent!!');
-    });
+    let feedback = '';
+
+    let info = await transporter.sendMail(mailOptions);
+
+    return "Message sent " + info.envelope.to
+
 }
 
 module.exports.sendMail = send;
