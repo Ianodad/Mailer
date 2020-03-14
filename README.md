@@ -4,7 +4,7 @@ This is an application that sends mail to the student from a list with appropria
 ---
 ## Requirements
 
-For development, you will only need Node.js and a node global package, Yarn, installed in your environement.
+For development, you will only need Node.js and a node global package, npm , installed in your environement.
 
 ### Node
 - #### Node installation on Windows
