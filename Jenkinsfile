@@ -17,6 +17,6 @@ node {
 		}	
 	}
 	stage('build'){
-		sh "docker run -d -p 80:8000 ianodadmailer:${commit_id}"
+		sh "docker run -d -p 80:8000 ianodad/mailer:${commit_id}"
 	}
 }
