@@ -16,8 +16,7 @@ node {
 	  def app = docker.build("ianodad/mailer:${commit_id}", ".").push()
 		}	
 	}
-	stage('build')
+	stage('build'){
 		sh "docker run -d -p 80:8000 mailer:${commit_id}"
-
 	}
 }
