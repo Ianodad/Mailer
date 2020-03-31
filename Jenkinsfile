@@ -11,9 +11,14 @@ node {
 	  sh 'npm test'		
 		}	
 	}
-	stage('docker build/push'){
+	stage('push'){
 	 docker.withRegistry('https://index.docker.io/v1', 'dockerhub'){
 	  def app = docker.build("ianodad/mailer:${commit_id}", ".").push()
 		}	
+	}
+	stage('build'){
+		steps {
+			sh 'docker run -d -p 80:8000 mailer:${commit_id}'
+		}
 	}
 }
