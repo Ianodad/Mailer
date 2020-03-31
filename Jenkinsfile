@@ -17,8 +17,6 @@ node {
 		}	
 	}
 	stage('build'){
-		steps {
-			sh 'docker run -d -p 80:8000 mailer:${commit_id}'
-		}
+		sh 'docker run -d -p 80:8000 mailer:${commit_id}'
 	}
 }
