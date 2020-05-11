@@ -14,8 +14,12 @@ node('mailer') {
 		}
 	}
 	stage('push'){
-	 docker.withRegistry('https://index.docker.io/v1', 'dockerhubcreds'){
+	 docker.withRegistry('', 'dockerhubcreds'){
 	  def app = docker.build("ianodad/mailer:${commit_id}", ".").push()
-		}	
+		}
+	stage('Remove Unused docker image') {
+      	 steps{
+		 sh "docker rmi ianodad/mailer:${commit_id}"
+      		}
 	}
 }
