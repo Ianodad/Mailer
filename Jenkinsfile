@@ -16,7 +16,6 @@ node('mailer') {
 		}
 	}
 	stage('build'){
-		echo "This is the commit id: ${commit_id}"
 		dockerImage = docker.build("ianodad/mailer:${commit_id}", ".")
 	}
 	stage('push'){
