@@ -6,7 +6,7 @@ node('mailer') {
 	 commit_id = readFile('.git/commit-id').trim()
 	}
 	stage ('test') {
-	  def myTestContainer = docker.image('node:12.3')
+	  def myTestContainer = docker.image('node:latest')
 	    myTestContainer.pull()
             myTestContainer.inside("-u root") {
 	    sh 'npm install --only=dev'
