@@ -1,5 +1,3 @@
-def dockerImage;
-
 node('mailer') {
 	def commit_id;
 	stage('SCM'){
@@ -15,12 +13,9 @@ node('mailer') {
             sh 'npm test'
 		}
 	}
-	stage('build'){
-		dockerImage = docker.build("ianodad/mailer:v$commit_id", ".")
-	}
 	stage('push'){
-	  docker.withRegistry("https://index.docker.io/v1", 'dockerhubcreds') {
-	    dockerImage.push();
-		}
+	 docker.withRegistry('https://index.docker.io/v1', 'dockerhub'){
+	  def app = docker.build("ianodad/mailer:${commit_id}", ".").push()
+		}	
 	}
 }
