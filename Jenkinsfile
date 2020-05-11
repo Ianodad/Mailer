@@ -1,6 +1,6 @@
 def dockerImage;
-def commit_id
-node('MAILER') {
+def commit_id;
+node('mailer') {
 	stage('SCM'){
 	checkout scm
 	 sh "git rev-parse --short HEAD > .git/commit-id"
