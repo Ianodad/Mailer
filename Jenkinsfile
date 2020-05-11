@@ -1,23 +1,25 @@
-node {
-	def commit_id
-	stage('Preparation'){
-	 checkout scm
+def dockerImage;
+def commit_id
+node('node_test') {
+	stage('SCM'){
+	checkout scm
 	 sh "git rev-parse --short HEAD > .git/commit-id"
-	 commit_id = readFile('.git/commit-id').trim()		
+	 commit_id = readFile('.git/commit-id').trim()
 	}
-	stage('test'){
-	 nodejs(nodeJSInstallationName: 'nodejs') {
-	  sh 'npm install --only=dev'
-	  sh 'npm test'		
-		}	
-	}
-	stage('push'){
-	 docker.withRegistry('https://index.docker.io/v1', 'dockerhub'){
-	  def app = docker.build("ianodad/mailer:${commit_id}", ".").push()
-		}	
+	stage ('test') {
+	  def myTestContainer = docker.image('node:12.3')
+	    myTestContainer.pull()
+            myTestContainer.inside("-u root") {
+	    sh 'npm install --only=dev'
+            sh 'npm test'
+		}
 	}
 	stage('build'){
-		//sh "docker stop ianodad/mailer"
-		sh "docker run -d -p 80:8000 ianodad/mailer:${commit_id}"
+		dockerImage = docker.build('ianodad/mailer:${commit_id}')
+	}
+	stage('push'){
+	  docker.withRegistry("https://index.docker.io/v1", 'dockerhubcreds') {
+	    dockerImage.push();
+		}
 	}
 }
