@@ -16,7 +16,7 @@ node('mailer') {
 		}
 	}
 	stage('build'){
-		dockerImage = docker.build("ianodad/mailer:${commit_id}", ".")
+		dockerImage = docker.build("ianodad/mailer:v$commit_id", ".")
 	}
 	stage('push'){
 	  docker.withRegistry("https://index.docker.io/v1", 'dockerhubcreds') {
