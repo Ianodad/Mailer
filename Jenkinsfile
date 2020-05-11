@@ -14,7 +14,7 @@ node('mailer') {
 		}
 	}
 	stage('push'){
-	 docker.withRegistry('https://index.docker.io/v1', 'dockerhub'){
+	 docker.withRegistry('https://index.docker.io/v1', 'dockerhubcreds'){
 	  def app = docker.build("ianodad/mailer:${commit_id}", ".").push()
 		}	
 	}
